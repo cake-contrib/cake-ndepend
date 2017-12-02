@@ -228,6 +228,15 @@ Task("Package")
     .IsDependentOn("Pack")
     .Does(() => { Information("Everything is done! Let's go live!"); });
 
+Task("TravisCI")
+    .Description("Runs on TravisCI.")
+    .IsDependentOn("Clean")
+    .IsDependentOn("Restore")
+    .IsDependentOn("SemVer")
+    .IsDependentOn("Build")
+    .IsDependentOn("Test-Unit")
+    .Does(() => { Information("Everything is done! Well done Travis!"); });
+
 ///////////////////////////////////////////////////////////////////////////////
 // DEFAULT TARGET
 ///////////////////////////////////////////////////////////////////////////////
