@@ -9,4 +9,4 @@ deploy:
 - provider: NuGet
   api_key:
     secure: xYKR6UZf0gwhlj9vaF2V350eapAief4eRn5nAoCl5RGmByvS5ct1ZWNaXbAaqOMG
-  skip_symbols: true
+  skip_symbols: false

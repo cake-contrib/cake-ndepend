@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{BFBC8740-8631-4D0D-9DB3-CFE6645D8904}"
 	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
 		appveyor.yml = appveyor.yml
+		build.cake = build.cake
 		build.ps1 = build.ps1
 		build.sh = build.sh
 	EndProjectSection
