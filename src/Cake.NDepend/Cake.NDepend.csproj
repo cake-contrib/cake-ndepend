@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net46;netstandard1.6</TargetFrameworks>
+    <AssemblyName>Cake.NDepend</AssemblyName>
+    <RootNamespace>Cake.NDepend</RootNamespace>
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.6' ">1.6.1</NetStandardImplicitPackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageId>Cake.NDepend</PackageId>
+    <Authors>João Rosa</Authors>
+    <Description>Cake Build addin for NDepend.</Description>
+    <PackageProjectUrl>https://github.com/joaoasrosa/cake-ndepend</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/joaoasrosa/cake-ndepend/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>cake ndepend cake-build cake-contrib</PackageTags>
+    <IncludeSymbols>true</IncludeSymbols>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <PackageReleaseNotes>See https://github.com/joaoasrosa/cake-ndepend/blob/master/ReleaseNotes.md</PackageReleaseNotes>
+    <PackageVersion>0.1.0</PackageVersion>
+    <AssemblyVersion>0.1.0</AssemblyVersion>
+    <FileVersion>0.1.0</FileVersion>
+    <Version>0.1.0+1</Version>
+    <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/joaoasrosa/cake-ndepend</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Ps\**" />
+    <EmbeddedResource Remove="Ps\**" />
+    <None Remove="Ps\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cake.Core" Version="0.23.0">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

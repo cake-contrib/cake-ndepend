@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{BFBC8740-8631-4D0D-9DB3-CFE6645D8904}"
+	ProjectSection(SolutionItems) = preProject
+		build.ps1 = build.ps1
+		build.sh = build.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1E516C6C-644E-4743-BAD6-04B91413C7A3}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+		ReleaseNotes.md = ReleaseNotes.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{81B366FB-6F1C-4F3D-8BE5-7D395FAF744E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.NDepend", "src\Cake.NDepend\Cake.NDepend.csproj", "{78D9D894-F4B7-4FE7-915E-75AB7375C8E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6EA8EF06-8B8F-4CDB-A4D8-9EBD3FA9183D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.NDepend.Tests.Unit", "tests\Cake.NDepend.Tests.Unit\Cake.NDepend.Tests.Unit.csproj", "{8600CC72-72AF-4A7F-AEEC-0D446F902C73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78D9D894-F4B7-4FE7-915E-75AB7375C8E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78D9D894-F4B7-4FE7-915E-75AB7375C8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78D9D894-F4B7-4FE7-915E-75AB7375C8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78D9D894-F4B7-4FE7-915E-75AB7375C8E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8600CC72-72AF-4A7F-AEEC-0D446F902C73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8600CC72-72AF-4A7F-AEEC-0D446F902C73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8600CC72-72AF-4A7F-AEEC-0D446F902C73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8600CC72-72AF-4A7F-AEEC-0D446F902C73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78D9D894-F4B7-4FE7-915E-75AB7375C8E3} = {81B366FB-6F1C-4F3D-8BE5-7D395FAF744E}
+		{8600CC72-72AF-4A7F-AEEC-0D446F902C73} = {6EA8EF06-8B8F-4CDB-A4D8-9EBD3FA9183D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {84AF1742-BE06-4AF2-BC58-4D4881131B6B}
+	EndGlobalSection
+EndGlobal
