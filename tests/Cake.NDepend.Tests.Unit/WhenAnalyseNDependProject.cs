@@ -16,7 +16,7 @@ namespace Cake.NDepend.Tests.Unit
         [Fact]
         public void GivenNullCakeContext_ThrowsArgumentNullException()
         {
-            var exception = Record.Exception(() => NDependAliases.Analyse(null, new NDependSettings()));
+            var exception = Record.Exception(() => NDependAliases.NDependAnalyse(null, new NDependSettings()));
 
             exception.Should().BeOfType<ArgumentNullException>();
             ((ArgumentNullException)exception)?.ParamName.Should().Be("context");
@@ -26,7 +26,7 @@ namespace Cake.NDepend.Tests.Unit
         public void GivenNullNDependSettings_ThrowsArgumentNullException()
         {
             var cakeContextMock = new Mock<ICakeContext>();
-            var exception = Record.Exception(() => cakeContextMock.Object.Analyse(null));
+            var exception = Record.Exception(() => cakeContextMock.Object.NDependAnalyse(null));
 
             exception.Should().BeOfType<ArgumentNullException>();
             ((ArgumentNullException)exception)?.ParamName.Should().Be("settings");
@@ -36,7 +36,7 @@ namespace Cake.NDepend.Tests.Unit
         public void GivenInvalidProjectPath_ThrowsNDependSettingsOptionException()
         {
             var cakeContextMock = new Mock<ICakeContext>();
-            var exception = Record.Exception(() => cakeContextMock.Object.Analyse(new NDependSettings()));
+            var exception = Record.Exception(() => cakeContextMock.Object.NDependAnalyse(new NDependSettings()));
 
             exception.Should().BeOfType<NDependSettingsOptionException>();
         }

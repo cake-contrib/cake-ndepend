@@ -61,14 +61,7 @@ namespace Cake.NDepend
             var process = RunProcess(_settings, processArgumentBuilder, processSettings);
             process.WaitForExit();
 
-            var exitCode = process.GetExitCode();
-
-            Console.WriteLine(process.GetStandardOutput().Select(x => x));
-
-            if(exitCode != 0)
-                Console.Error.WriteLine(process.GetStandardError().Select(x => x));
-
-            return exitCode;
+            return process.GetExitCode();
         }
 
         /// <summary>
@@ -79,65 +72,64 @@ namespace Cake.NDepend
         {
             var processArguments = new List<IProcessArgument>
                                    {
-                                       new ProcessArgumentString(
-                                           nameof(_settings.ProjectPath),
+                                       new ProcessArgumentProject(
                                            _settings),
                                        new ProcessArgumentBool(
-                                           nameof(_settings.ViewReport),
+                                           "ViewReport",
                                            _settings),
                                        new ProcessArgumentBool(
-                                           nameof(_settings.Silent),
+                                           "Silent",
                                            _settings),
                                        new ProcessArgumentBool(
-                                           nameof(_settings.HideConsole),
+                                           "HideConsole",
                                            _settings),
                                        new ProcessArgumentBool(
-                                           nameof(_settings.Concurrent),
+                                           "Concurrent",
                                            _settings),
                                        new ProcessArgumentBool(
-                                           nameof(_settings.LogTrendMetrics),
+                                           "LogTrendMetrics",
                                            _settings),
                                        new ProcessArgumentBool(
-                                           nameof(_settings.TrendStoreDir),
+                                           "TrendStoreDir",
                                            _settings),
                                        new ProcessArgumentBool(
-                                           nameof(_settings.PersistHistoricAnalysisResult),
+                                           "PersistHistoricAnalysisResult",
                                            _settings),
                                        new ProcessArgumentBool(
-                                           nameof(_settings.HistoricAnalysisResultsDir),
-                                           _settings),
-                                       new ProcessArgumentString(
-                                           nameof(_settings.OutDir),
+                                           "HistoricAnalysisResultsDir",
                                            _settings),
                                        new ProcessArgumentString(
-                                           nameof(_settings.XslForReport),
-                                           _settings),
-                                       new ProcessArgumentStringCollection(
-                                           nameof(_settings.InDirs),
-                                           _settings),
-                                       new ProcessArgumentBool(
-                                           nameof(_settings.KeepProjectInDirs),
-                                           _settings),
-                                       new ProcessArgumentStringCollection(
-                                           nameof(_settings.CoverageFiles),
-                                           _settings),
-                                       new ProcessArgumentBool(
-                                           nameof(_settings.KeepProjectCoverageFiles),
+                                           "OutDir",
                                            _settings),
                                        new ProcessArgumentString(
-                                           nameof(_settings.CoverageDir),
+                                           "XslForReport",
                                            _settings),
                                        new ProcessArgumentStringCollection(
-                                           nameof(_settings.RuleFiles),
+                                           "InDirs",
                                            _settings),
                                        new ProcessArgumentBool(
-                                           nameof(_settings.KeepProjectRuleFiles),
+                                           "KeepProjectInDirs",
                                            _settings),
                                        new ProcessArgumentStringCollection(
-                                           nameof(_settings.PathVariables),
+                                           "CoverageFiles",
                                            _settings),
                                        new ProcessArgumentBool(
-                                           nameof(_settings.AnalysisResultToCompareWith),
+                                           "KeepProjectCoverageFiles",
+                                           _settings),
+                                       new ProcessArgumentString(
+                                           "CoverageDir",
+                                           _settings),
+                                       new ProcessArgumentStringCollection(
+                                           "RuleFiles",
+                                           _settings),
+                                       new ProcessArgumentBool(
+                                           "KeepProjectRuleFiles",
+                                           _settings),
+                                       new ProcessArgumentStringCollection(
+                                           "PathVariables",
+                                           _settings),
+                                       new ProcessArgumentBool(
+                                           "AnalysisResultToCompareWith",
                                            _settings)
                                    };
 

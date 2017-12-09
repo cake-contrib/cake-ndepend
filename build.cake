@@ -6,7 +6,7 @@
 
 var target = Argument<string>("target", "Default");
 var configuration = Argument<string>("configuration", "Release");
-var verbosity = Argument<string>("verbosity", "Normal");
+var verbosity = Argument<string>("verbosity", "Minimal");
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
@@ -22,6 +22,9 @@ var projects = new []
 };
 
 var unitTestsProjects = GetFiles(testsDir.Path + "/**/*.Tests.Unit.csproj");
+
+// USED TO CREATE NUGET PACKAGES
+var createPackage = false;
 
 // BUILD OUTPUT DIRECTORIES
 var artifactsDir = Directory("./artifacts");
@@ -170,10 +173,24 @@ Task("Test-Unit")
     .Description("Runs all your unit tests, using dotnet CLI.")
     .Does(() => { Test(unitTestsProjects); });
 
+Task("AppVeyor-Pack")
+    .Description("Prepares to pack the project, using AppVeyor.")
+    .Does(() =>
+    {
+        var tagBuildEnvVar = EnvironmentVariable("APPVEYOR_REPO_TAG");
+        bool.TryParse(tagBuildEnvVar, out createPackage);
+    });
+
 Task("Pack")
 	.Description("Packs all the different parts of the project.")
 	.Does(() => 
     {
+        if(!createPackage)
+        {
+            Information("Skipping the NuGet pack step.");
+            return;
+        }
+
         var settings = new DotNetCorePackSettings 
         {
             Configuration = configuration,
@@ -218,15 +235,16 @@ Task("Test-All")
     .IsDependentOn("Test-Unit")
     .Does(() => { Information("Tested everything"); });
 
-Task("Package")
+Task("AppVeyor")
     .Description("Runs on AppVeyor after 'merging master'.")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
     .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
+    .IsDependentOn("AppVeyor-Pack")
     .IsDependentOn("Pack")
-    .Does(() => { Information("Everything is done! Let's go live!"); });
+    .Does(() => { Information("Everything is done! Well done AppVeyor."); });
 
 Task("TravisCI")
     .Description("Runs on TravisCI.")
@@ -235,7 +253,7 @@ Task("TravisCI")
     .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
-    .Does(() => { Information("Everything is done! Well done Travis!"); });
+    .Does(() => { Information("Everything is done! Well done TravisCI!"); });
 
 ///////////////////////////////////////////////////////////////////////////////
 // DEFAULT TARGET
@@ -243,8 +261,8 @@ Task("TravisCI")
 
 Task("Default")
     .Description("This is the default task which will run if no specific target is passed in.")
-    .IsDependentOn("Package")
-    .Does(() => { Warning("No 'Target' was passed in, so we ran the AppVeyor 'Package' operation."); });
+    .IsDependentOn("Build+Test")
+    .Does(() => { Warning("No 'Target' was passed in, so we ran the 'Build+Test' operation."); });
 
 ///////////////////////////////////////////////////////////////////////////////
 // EXECUTION
