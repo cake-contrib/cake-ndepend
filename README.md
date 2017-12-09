@@ -7,6 +7,10 @@ A Cake AddIn that extends the `NDepend.Console` [command line tool](https://www.
 [![cakebuild.net](https://img.shields.io/badge/WWW-cakebuild.net-blue.svg)](http://cakebuild.net/)
 
 ## Usage
+
+### Prerequisites
+The addin is based on the `NDepend.Console` command line tool. Before using it, make sure the NDepend installation location is part of the environment variable `PATH`, and you have a valid license.
+
 ### Including the addin
 
 To include the addin, add the following to the beginning of the `cake` script:
@@ -58,7 +62,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **João Rosa** - *Initial work* - [joaoasrosa](https://github.com/joaoasrosa) [![Twitter Follow](https://img.shields.io/twitter/follow/espadrine.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=joaoasrosa)
+* **João Rosa** - *Initial work* - [joaoasrosa](https://github.com/joaoasrosa) [![Follow @joaoasrosa](https://img.shields.io/badge/Twitter-Follow%20%40joaoasrosa-blue.svg)](https://twitter.com/intent/follow?screen_name=joaoasrosa) 
 
 See also the list of [contributors](https://github.com/joaoasrosa/cake-ndepend/contributors) who participated in this project.
 
