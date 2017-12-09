@@ -18,7 +18,7 @@ namespace Cake.NDepend
         /// <param name="context">The Cake context.</param>
         /// <param name="settings">The NDepend settings.</param>
         [CakeMethodAlias]
-        public static void Analyse(this ICakeContext context, NDependSettings settings)
+        public static void NDependAnalyse(this ICakeContext context, NDependSettings settings)
         {
             if(context == null)
                 throw new ArgumentNullException(nameof(context));
