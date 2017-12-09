@@ -14,9 +14,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{BFBC8740
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1E516C6C-644E-4743-BAD6-04B91413C7A3}"
 	ProjectSection(SolutionItems) = preProject
+		CONTRIBUTING.md = CONTRIBUTING.md
+		docs\DEVELOPMENT.md = docs\DEVELOPMENT.md
 		LICENSE = LICENSE
 		README.md = README.md
 		ReleaseNotes.md = ReleaseNotes.md
+		docs\SETUP.md = docs\SETUP.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{81B366FB-6F1C-4F3D-8BE5-7D395FAF744E}"
