@@ -24,6 +24,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/joaoasrosa/cake-ndepend</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <Copyright>Copyright (c) 2017 João Rosa. MIT license</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
