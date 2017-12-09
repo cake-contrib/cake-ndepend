@@ -1,3 +1,7 @@
+#Cake.NDepend 1.0.3
+- Update the README to include the prerequisites.
+- Includes cake-contrib as co-owner of the package (issue #5).
+
 #Cake.NDepend 1.0.2
 - Updates the README.
 - Includes the `Cake.NDepend` addin into the build pipeline, producing the reports as build artifact.
