@@ -1,4 +1,5 @@
 #tool "nuget:?package=GitVersion.CommandLine"
+#addin "Cake.NDepend"
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -22,6 +23,9 @@ var projects = new []
 };
 
 var unitTestsProjects = GetFiles(testsDir.Path + "/**/*.Tests.Unit.csproj");
+var ndependProjects = GetFiles("./**/*.ndproj");
+
+var fullSemVer = "";
 
 // USED TO CREATE NUGET PACKAGES
 var createPackage = false;
@@ -143,6 +147,8 @@ Task("SemVer")
             
             Information("SemVer applied to '{0}'...", csproj.FullPath);
         }
+
+        fullSemVer = gitVersion.FullSemVer;
     });
 
 Task("Build")
@@ -172,6 +178,27 @@ Task("Build")
 Task("Test-Unit")
     .Description("Runs all your unit tests, using dotnet CLI.")
     .Does(() => { Test(unitTestsProjects); });
+
+Task("NDepend-Analyse")
+    .Description("Runs the NDepend analyser on the project.")
+    .Does(() => 
+    {
+        foreach(var ndependProject in ndependProjects)
+        {
+            var settings = new NDependSettings
+            {
+                ProjectPath = ndependProject.FullPath
+            };
+
+            Information("Analysing NDepend project '{0}'...", ndependProject.FullPath);
+            NDependAnalyse(settings);
+            Information("'{0}' NDepend project has been analysed.", ndependProject.FullPath);
+        }
+
+        Information("Compressing NDepend reports...");
+        Zip("./NDependOut", $"{MakeAbsolute(artifactsDir).FullPath}/NDependOut.{fullSemVer}.zip");
+        Information("NDepend reports has been compressed.");
+    });
 
 Task("AppVeyor-Pack")
     .Description("Prepares to pack the project, using AppVeyor.")
@@ -207,9 +234,7 @@ Task("Pack")
             DotNetCorePack(project, settings);
             Information("'{0}' has been packed.", project);
         }
-        
     });
-
 
 ///////////////////////////////////////////////////////////////////////////////
 // COMBINATIONS - let's make life easier...
@@ -219,6 +244,7 @@ Task("Build+Test")
     .Description("First runs Build, then Test targets.")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
+    .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
     .Does(() => { Information("Ran Build+Test target"); });
@@ -227,6 +253,7 @@ Task("Rebuild")
     .Description("Runs a full Clean+Restore+Build build.")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
+    .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .Does(() => { Information("Rebuilt everything"); });
 
@@ -235,6 +262,12 @@ Task("Test-All")
     .IsDependentOn("Test-Unit")
     .Does(() => { Information("Tested everything"); });
 
+Task("Analyse")
+    .Description("Analyse the solution.")
+    .IsDependentOn("Build+Test")
+    .IsDependentOn("NDepend-Analyse")
+    .Does(() => { Information("Analyses done"); });    
+
 Task("AppVeyor")
     .Description("Runs on AppVeyor after 'merging master'.")
     .IsDependentOn("Clean")
@@ -242,6 +275,7 @@ Task("AppVeyor")
     .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
+    //.IsDependentOn("NDepend-Analyse")
     .IsDependentOn("AppVeyor-Pack")
     .IsDependentOn("Pack")
     .Does(() => { Information("Everything is done! Well done AppVeyor."); });
@@ -253,6 +287,7 @@ Task("TravisCI")
     .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
+    .IsDependentOn("NDepend-Analyse")
     .Does(() => { Information("Everything is done! Well done TravisCI!"); });
 
 ///////////////////////////////////////////////////////////////////////////////
