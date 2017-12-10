@@ -15,7 +15,7 @@ If you get this far, you heavily use the tool and that *bug* (sometimes we call 
 Start forking the repo (assuming that you have a [GitHub account][github_account]). The [guide][forking_guide] will help you with the task.
 Then clone the repo:
 
-    git clone git@github.com:your-username/pullrequests-viewer.git
+    git clone git@github.com:your-username/cake-ndepend.git
     
 Setup your machine following this [guide][setup_guide]!
 
