@@ -1,5 +1,10 @@
 version: '{build}'
 image: Visual Studio 2017
+environment:
+  secret-key:
+    secure: nPneMQjhYu8XSvKMBDvmpYt5aJ/8sleCLbHjlMK0eMC/cyv9TZJ+2tGrSmenPy38
+install:
+- ps: .\build\install.ps1
 build_script:
 - ps: .\build.ps1 --target=AppVeyor
 test: off
