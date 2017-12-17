@@ -204,6 +204,14 @@ Task("AppVeyor-Pack")
     .Description("Prepares to pack the project, using AppVeyor.")
     .Does(() =>
     {
+        // -- TEST THE SECURE FILE
+        var filePath = "./build/secret.txt";
+        if(System.IO.File.Exists(filePath))
+        {
+            Information("The value of the secure file is: '{0}'", System.IO.File.ReadAllText(filePath));
+        }
+        // -- END TEST
+
         var tagBuildEnvVar = EnvironmentVariable("APPVEYOR_REPO_TAG");
         bool.TryParse(tagBuildEnvVar, out createPackage);
     });
