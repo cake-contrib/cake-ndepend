@@ -133,19 +133,17 @@ Task("SemVer")
         Information("Full SemVer: " + gitVersion.FullSemVer);
         Information("Major Minor Patch: " + gitVersion.MajorMinorPatch);
         
-        var csprojs = GetFiles("./**/*csproj");
-
-        foreach(var csproj in csprojs)
+        foreach(var project in projects)
         {
-            Information("Applying SemVer to '{0}'...", csproj.FullPath);
+            Information("Applying SemVer to '{0}'...", project);
 
-            if(XmlPeek(csproj, "/Project/PropertyGroup/PackageVersion") != null)
-                XmlPoke(csproj, "/Project/PropertyGroup/PackageVersion", gitVersion.NuGetVersionV2);
-            XmlPoke(csproj, "/Project/PropertyGroup/AssemblyVersion", gitVersion.MajorMinorPatch);
-            XmlPoke(csproj, "/Project/PropertyGroup/FileVersion", gitVersion.MajorMinorPatch);
-            XmlPoke(csproj, "/Project/PropertyGroup/Version", gitVersion.FullSemVer);
+            if(XmlPeek(project, "/Project/PropertyGroup/PackageVersion") != null)
+                XmlPoke(project, "/Project/PropertyGroup/PackageVersion", gitVersion.NuGetVersionV2);
+            XmlPoke(project, "/Project/PropertyGroup/AssemblyVersion", gitVersion.MajorMinorPatch);
+            XmlPoke(project, "/Project/PropertyGroup/FileVersion", gitVersion.MajorMinorPatch);
+            XmlPoke(project, "/Project/PropertyGroup/Version", gitVersion.FullSemVer);
             
-            Information("SemVer applied to '{0}'...", csproj.FullPath);
+            Information("SemVer applied to '{0}'...", project);
         }
 
         fullSemVer = gitVersion.FullSemVer;
@@ -183,21 +181,25 @@ Task("NDepend-Analyse")
     .Description("Runs the NDepend analyser on the project.")
     .Does(() => 
     {
-        foreach(var ndependProject in ndependProjects)
+        var pathEnvVar = EnvironmentVariable("PATH");
+        if(pathEnvVar.Contains("NDepend"))
         {
-            var settings = new NDependSettings
+            foreach(var ndependProject in ndependProjects)
             {
-                ProjectPath = ndependProject.FullPath
-            };
+                var settings = new NDependSettings
+                {
+                    ProjectPath = ndependProject.FullPath
+                };
 
-            Information("Analysing NDepend project '{0}'...", ndependProject.FullPath);
-            NDependAnalyse(settings);
-            Information("'{0}' NDepend project has been analysed.", ndependProject.FullPath);
+                Information("Analysing NDepend project '{0}'...", ndependProject.FullPath);
+                NDependAnalyse(settings);
+                Information("'{0}' NDepend project has been analysed.", ndependProject.FullPath);
+            }
+
+            Information("Compressing NDepend reports...");
+            Zip("./NDependOut", $"{MakeAbsolute(artifactsDir).FullPath}/NDependOut.{fullSemVer}.zip");
+            Information("NDepend reports has been compressed.");
         }
-
-        Information("Compressing NDepend reports...");
-        Zip("./NDependOut", $"{MakeAbsolute(artifactsDir).FullPath}/NDependOut.{fullSemVer}.zip");
-        Information("NDepend reports has been compressed.");
     });
 
 Task("AppVeyor-Pack")
@@ -275,7 +277,7 @@ Task("AppVeyor")
     .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
-    //.IsDependentOn("NDepend-Analyse")
+    .IsDependentOn("NDepend-Analyse")
     .IsDependentOn("AppVeyor-Pack")
     .IsDependentOn("Pack")
     .Does(() => { Information("Everything is done! Well done AppVeyor."); });
