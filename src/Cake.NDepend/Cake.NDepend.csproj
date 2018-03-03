@@ -17,10 +17,10 @@
     <IncludeSymbols>true</IncludeSymbols>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageReleaseNotes>See https://github.com/joaoasrosa/cake-ndepend/blob/master/ReleaseNotes.md</PackageReleaseNotes>
-    <PackageVersion>1.0.2-documentation0001</PackageVersion>
-    <AssemblyVersion>1.0.2</AssemblyVersion>
-    <FileVersion>1.0.2</FileVersion>
-    <Version>1.0.2-Documentation.1+1</Version>
+    <PackageVersion>1.1.1-update-cake0001</PackageVersion>
+    <AssemblyVersion>1.1.1</AssemblyVersion>
+    <FileVersion>1.1.1</FileVersion>
+    <Version>1.1.1-Update-Cake.1+4</Version>
     <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/joaoasrosa/cake-ndepend</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

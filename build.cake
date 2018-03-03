@@ -1,5 +1,5 @@
 #tool "nuget:?package=GitVersion.CommandLine"
-#addin "Cake.NDepend"
+//#addin "Cake.NDepend"
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -181,25 +181,28 @@ Task("NDepend-Analyse")
     .Description("Runs the NDepend analyser on the project.")
     .Does(() => 
     {
-        var pathEnvVar = EnvironmentVariable("PATH");
-        if(pathEnvVar.Contains("NDepend"))
-        {
-            foreach(var ndependProject in ndependProjects)
-            {
-                var settings = new NDependSettings
-                {
-                    ProjectPath = ndependProject.FullPath
-                };
-
-                Information("Analysing NDepend project '{0}'...", ndependProject.FullPath);
-                NDependAnalyse(settings);
-                Information("'{0}' NDepend project has been analysed.", ndependProject.FullPath);
-            }
-
-            Information("Compressing NDepend reports...");
-            Zip("./NDependOut", $"{MakeAbsolute(artifactsDir).FullPath}/NDependOut.{fullSemVer}.zip");
-            Information("NDepend reports has been compressed.");
-        }
+        /*
+		*var pathEnvVar = EnvironmentVariable("PATH");
+        *if(pathEnvVar.Contains("NDepend"))
+        *{
+        *    foreach(var ndependProject in ndependProjects)
+        *    {
+        *        var settings = new NDependSettings
+        *        {
+        *            ProjectPath = ndependProject.FullPath
+        *        };
+		*
+        *        Information("Analysing NDepend project '{0}'...", ndependProject.FullPath);
+        *        NDependAnalyse(settings);
+        *        Information("'{0}' NDepend project has been analysed.", ndependProject.FullPath);
+        *    }
+		*
+        *    Information("Compressing NDepend reports...");
+        *    Zip("./NDependOut", $"{MakeAbsolute(artifactsDir).FullPath}/NDependOut.{fullSemVer}.zip");
+        *    Information("NDepend reports has been compressed.");
+		*
+        *}
+		*/
     });
 
 Task("AppVeyor-Pack")
