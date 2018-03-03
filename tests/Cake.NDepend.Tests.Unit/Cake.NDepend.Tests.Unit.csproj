@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.25.0" />
+    <PackageReference Include="Cake.Core" Version="0.26.0" />
     <PackageReference Include="FluentAssertions" Version="5.1.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.6.0" />
     <PackageReference Include="Moq" Version="4.8.2" />
