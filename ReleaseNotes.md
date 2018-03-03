@@ -1,3 +1,10 @@
+#Cake.NDepende 1.2.0
+- Update Cake dependencies to 0.26.0
+- Add .NET Core as target framework
+
+#Cake.NDepende 1.1.0
+- Update Cake dependencies to 0.25.0
+
 #Cake.NDepend 1.0.3
 - Update the README to include the prerequisites.
 - Includes cake-contrib as co-owner of the package (issue #5).
