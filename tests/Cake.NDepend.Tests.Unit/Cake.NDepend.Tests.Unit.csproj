@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFrameworks>net461;netcoreapp2.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
     <AssemblyVersion>1.0.2</AssemblyVersion>
     <FileVersion>1.0.2</FileVersion>
@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.25.0" />
+    <PackageReference Include="Cake.Core" Version="0.26.0" />
     <PackageReference Include="FluentAssertions" Version="5.1.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.6.0" />
     <PackageReference Include="Moq" Version="4.8.2" />
