@@ -1,8 +1,8 @@
-#Cake.NDepende 1.2.0
+#Cake.NDepend 1.2.0
 - Update Cake dependencies to 0.26.0
 - Add .NET Core as target framework
 
-#Cake.NDepende 1.1.0
+#Cake.NDepend 1.1.0
 - Update Cake dependencies to 0.25.0
 
 #Cake.NDepend 1.0.3
