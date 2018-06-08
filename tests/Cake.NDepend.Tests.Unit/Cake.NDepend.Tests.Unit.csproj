@@ -1,24 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFrameworks>net461;netcoreapp2.0</TargetFrameworks>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <AssemblyVersion>1.0.2</AssemblyVersion>
     <FileVersion>1.0.2</FileVersion>
     <Version>1.0.2-Documentation.1+1</Version>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.26.0" />
-    <PackageReference Include="FluentAssertions" Version="5.1.2" />
+    <PackageReference Include="Cake.Core" Version="0.28.0" />
+    <PackageReference Include="FluentAssertions" Version="5.3.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.6.0" />
     <PackageReference Include="Moq" Version="4.8.2" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\src\Cake.NDepend\Cake.NDepend.csproj" />
   </ItemGroup>
-
 </Project>

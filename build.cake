@@ -277,7 +277,7 @@ Task("AppVeyor")
     .IsDependentOn("SemVer")
     .IsDependentOn("Build")
     .IsDependentOn("Test-Unit")
-    .IsDependentOn("NDepend-Analyse")
+    //.IsDependentOn("NDepend-Analyse")
     .IsDependentOn("AppVeyor-Pack")
     .IsDependentOn("Pack")
     .Does(() => { Information("Everything is done! Well done AppVeyor."); });
