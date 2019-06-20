@@ -11,18 +11,18 @@
     <PackageId>Cake.NDepend</PackageId>
     <Authors>João Rosa</Authors>
     <Description>Cake Build addin for NDepend.</Description>
-    <PackageProjectUrl>https://github.com/joaoasrosa/cake-ndepend</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/joaoasrosa/cake-ndepend/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/cake-contrib/cake-ndepend</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/cake-contrib/cake-ndepend/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>cake ndepend cake-build cake-contrib</PackageTags>
     <IncludeSymbols>true</IncludeSymbols>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <PackageReleaseNotes>See https://github.com/joaoasrosa/cake-ndepend/blob/master/ReleaseNotes.md</PackageReleaseNotes>
+    <PackageReleaseNotes>See https://github.com/cake-contrib/cake-ndepend/blob/master/ReleaseNotes.md</PackageReleaseNotes>
     <PackageVersion>1.2.0</PackageVersion>
     <AssemblyVersion>1.2.0</AssemblyVersion>
     <FileVersion>1.2.0</FileVersion>
     <Version>1.2.0</Version>
     <PackageIconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
-    <RepositoryUrl>https://github.com/joaoasrosa/cake-ndepend</RepositoryUrl>
+    <RepositoryUrl>https://github.com/cake-contrib/cake-ndepend</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright (c) 2018 João Rosa. MIT license</Copyright>
   </PropertyGroup>
