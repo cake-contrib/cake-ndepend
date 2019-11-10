@@ -1,3 +1,7 @@
+#Cake.NDepend 1.30
+- Update `Cake.Core` dependency to version 0.33.0
+- Fix the NuGet API key, due to it's renewal
+
 #Cake.NDepend 1.2.0
 - Update Cake dependencies to 0.26.0
 - Add .NET Core as target framework
