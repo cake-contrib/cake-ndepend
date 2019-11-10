@@ -5,7 +5,7 @@
     <AssemblyName>Cake.NDepend</AssemblyName>
     <RootNamespace>Cake.NDepend</RootNamespace>
     <LangVersion>8</LangVersion>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>
