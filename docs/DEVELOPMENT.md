@@ -15,6 +15,9 @@ The naming convention for the unit test project is `<code-project-name>.Tests.Un
 ## Styling guide
 We (try our best) to follow the [.NET coding style][dotnet_coding_style]. It's in our plans to integrate it into the build pipeline, producing a report. Everyone will be happy.
 
+## Releasing
+The addin is released as NuGet package. When a new tag is added to the repo, it creates the package and upload it to the official NuGet repository.
+
 [contributing_guide]: https://github.com/joaoasrosa/cake-ndepend/blob/feature/add-documentation/CONTRIBUTING.md
 [folder_structure]: https://gist.github.com/davidfowl/ed7564297c61fe9ab814
 [david_fowler]: https://twitter.com/davidfowl

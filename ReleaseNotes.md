@@ -1,4 +1,10 @@
-#Cake.NDepend 1.30
+#Cake.NDepend 1.5.0
+- Update `Cake.Core` dependency to version 0.35.0
+- Update the test project dependencies to the latest versions
+- Update the test project to .NET Core 3.0
+- Enforce the usage of C# 8.0
+
+#Cake.NDepend 1.4.0
 - Update `Cake.Core` dependency to version 0.33.0
 - Fix the NuGet API key, due to it's renewal
 

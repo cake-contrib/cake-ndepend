@@ -1,5 +1,5 @@
 version: '{build}'
-image: Visual Studio 2017
+image: Visual Studio 2019
 environment:
   PACKAGE_KEY:
     secure: xM7MkIMHQEQgP6kf9brpWRtzazQMH+9BAIgij5HYv/FabMa1IrGnlNOPRmZkMhTk3zJ5QDEsNd+6+zA6uliK3t/3wN7j+RYmuLQO0J6BiAI=
