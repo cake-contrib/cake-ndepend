@@ -45,11 +45,10 @@ The `NDependSettings` have *one* mandatory option, `ProjectPath`. The remain opt
 
 ## Built With
 
-* [.NET Framework 4.6 & .NET Core 2.0](https://www.microsoft.com/net/download) - The Framework(s)
+* [.NET Core 2.0](https://www.microsoft.com/net/download) - The Framework
 * [NuGet](https://www.nuget.org/) - Dependency Management
 * [Cake](http://cakebuild.net/) - Cross Platform Build Automation System
 * [AppVeyor](https://www.appveyor.com/) - Continuous Integration & Delivery Service
-* [TravisCI](https://travis-ci.org/) - Continuous Integration Platform for GitHub
 * [NDepend](https://www.ndepend.com/) - Code Quality Platform
 
 ## Contributing
