@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 using Cake.Core;
 using Cake.Core.IO;
@@ -47,7 +45,7 @@ namespace Cake.NDepend
         /// <summary>
         ///     Runs the NDepend.Console.exe with the provided arguments.
         /// </summary>
-        /// <returns>The result of the analyses. Returns a non-zero exit code when at least one Quality Gate fails.</returns>
+        /// <returns>The result of the analysis. Returns a non-zero exit code when at least one Quality Gate fails.</returns>
         internal int Run()
         {
             var processArguments = CreateProcessArguments();
@@ -130,6 +128,9 @@ namespace Cake.NDepend
                                            _settings),
                                        new ProcessArgumentBool(
                                            "AnalysisResultToCompareWith",
+                                           _settings),
+                                       new ProcessArgumentBool(
+                                           "ForceReturnZeroExitCode",
                                            _settings)
                                    };
 
