@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 using Cake.Core.Tooling;
 
@@ -34,7 +32,7 @@ namespace Cake.NDepend
         public bool HideConsole { get; set; }
 
         /// <summary>
-        ///     To parralelize analysis execution.
+        ///     To parallel analysis execution.
         /// </summary>
         public bool Concurrent { get; set; }
 
@@ -119,13 +117,18 @@ namespace Cake.NDepend
         /// <summary>
         ///     To provide a previous analysis result to compare with.
         ///     Analysis results are stored in files with file name prefix NDependAnalysisResult_ and with extension.ndar.These
-        ///     files can be found under the NDepend project output directory.The prefered option to provide a previous analysis
+        ///     files can be found under the NDepend project output directory.The preferred option to provide a previous analysis
         ///     result to compare with during an analysis is to use: NDepend > Project Properties > Analysis > Baseline for
         ///     Comparison.
         ///     You can use the option AnalysisResultToCompareWith in special scenarios where using Project Properties
         ///     doesn't work.
         /// </summary>
         public string AnalysisResultToCompareWith { get; set; }
+
+        /// <summary>
+        ///     To force return a zero exit code even when one or many quality gate(s) fail 
+        /// </summary>
+        public bool ForceReturnZeroExitCode { get; set; }
 
         /// <summary>
         ///     The invalid options after validation.
